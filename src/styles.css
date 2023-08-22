@@ -40,6 +40,32 @@ button {
   color: inherit;
 }
 
+.btn {
+	background-color: #555555;
+	border: none;
+	color: #FFFFFF;
+	padding: 15px 15px;
+	text-align: center;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	margin: 16px 0 !important;
+	text-decoration: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.btn:hover{
+  background-color: #FFFFFF;
+  color: #555555;
+}
+
+.btn.restart {
+  width: 8rem;
+  border-radius: 3px;
+  border-color: #555555;
+  align-self: center;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -122,6 +148,42 @@ h1 {
 }
 .guess:last-of-type .cell:first-of-type {
   --radius: 0px 0px 0px 4px;
+}
+
+.letter-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;;
+}
+
+.letter-row button {
+  display: grid;
+  place-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.letter {
+  background: white;
+  color: black;
+}
+
+.letter.correct {
+  background: var(--color-success);
+  color: white;
+}
+
+.letter.misplaced {
+  background: var(--color-warning);
+  color: white;
+}
+
+.letter.incorrect {
+  background: var(--color-gray-300);
+  color: white;
 }
 
 .cell.correct {

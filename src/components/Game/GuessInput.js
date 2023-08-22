@@ -10,6 +10,8 @@ function GuessInput({
 	setGuessArray,
 	guessCount,
 	setGuessCount,
+	letterHistory,
+	setLetterHistory,
 }) {
 	const [userAnswer, setUserAnswer] = React.useState('');
 
@@ -27,6 +29,16 @@ function GuessInput({
 
 		currentGuess['letterStatus'] = result;
 		setGuessArray([...guessArray, currentGuess]);
+
+		const nextLetterHistory = letterHistory;
+
+		result.forEach(({ letter, status }) => {
+			if (!nextLetterHistory.hasOwnProperty(letter)) {
+				nextLetterHistory[letter] = status;
+			}
+		});
+
+		setLetterHistory(nextLetterHistory);
 
 		const nextGuessCount = guessCount + 1;
 		setGuessCount(nextGuessCount);

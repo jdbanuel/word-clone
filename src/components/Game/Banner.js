@@ -1,7 +1,16 @@
 import React from 'react';
+import Button from './Button';
 
-function Banner({ gameState, guessCount }) {
+function Banner({ gameState, guessCount, answer, showButton, handleReset }) {
 	let banner;
+	let resetButton = (
+		<Button
+			text="Play Again"
+			className={'btn restart'}
+			handleOnClick={handleReset}
+		/>
+	);
+
 	switch (gameState) {
 		case 'win':
 			banner = (
@@ -10,6 +19,7 @@ function Banner({ gameState, guessCount }) {
 						<strong>Congratulations!</strong> Got it in
 						<strong> {guessCount} guesses</strong>.
 					</p>
+					{showButton && resetButton}
 				</div>
 			);
 			break;
@@ -17,8 +27,9 @@ function Banner({ gameState, guessCount }) {
 			banner = (
 				<div className="sad banner">
 					<p>
-						Sorry, the correct answer is <strong>LEARN</strong>.
+						Sorry, the correct answer is <strong>{answer}</strong>.
 					</p>
+					{showButton && resetButton}
 				</div>
 			);
 			break;
